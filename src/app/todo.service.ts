@@ -17,17 +17,17 @@ export class TodoService {
     return Object.assign([], this.todoList);
   }
 
+  insertInitial() {
+    this.setContacts([{
+      descricao: 'comprar leite',
+      prazo: new Date()
+    }]);
+  }
+
   @action
   setContacts(todos: Todo[]) {
     console.log(todos);
     this.todoList = todos;
-  }
-
-  doSomething() {
-    const todos = this.todoList;
-    todos.push(todos[0]);
-    this.todoList = todos;
-    // this.setContacts(todos);
   }
 
   @computed

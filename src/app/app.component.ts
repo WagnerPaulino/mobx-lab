@@ -16,10 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todoService.setContacts([{
-      descricao: 'comprar leite',
-      prazo: new Date()
-    }]);
+    this.todoService.insertInitial();
     this.todoList = this.getTodos();
   }
 
@@ -28,7 +25,10 @@ export class AppComponent implements OnInit {
   }
 
   doSomething() {
-    this.todoService.doSomething();
+    const todos = this.todoList;
+    todos.push(todos[0]);
+    this.todoList = todos;
+    this.todoService.setContacts(todos);
   }
 
 }
